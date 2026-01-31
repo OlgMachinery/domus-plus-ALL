@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/*
+  UI style guided by the manual's tone:
+  - High contrast + minimal color
+  - Clear semantic states (✅ verificación, ⚠️ seguridad, ❌ error, 👉 next step)
+  - Strong hierarchy (headings, bold, monospace for code)
+*/
+
+:root {
+  /* Neutral monochrome base */
+  --background: 255 255 255;
+  --foreground: 17 24 39; /* slate-900 */
+  --card: 255 255 255;
+  --muted: 107 114 128; /* gray-500 */
+  --border: 229 231 235; /* gray-200 */
+
+  /* One “accent” only (manual doesn't define brand colors) */
+  --accent: 0 0 0;
+  --accent-foreground: 255 255 255;
+
+  /* Semantic colors (used sparingly, mostly for alerts) */
+  --success: 22 163 74; /* green-600 */
+  --warning: 245 158 11; /* amber-500 */
+  --danger: 220 38 38; /* red-600 */
+  --info: 59 130 246; /* blue-500 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 10 10 10;
+    --foreground: 237 237 237;
+    --card: 17 17 17;
+    --muted: 156 163 175; /* gray-400 */
+    --border: 38 38 38;
+
+    --accent: 255 255 255;
+    --accent-foreground: 0 0 0;
+  }
+}
+
+@theme inline {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base */
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Light “manual-like” typography (headings, code, checklists) */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-3xl px-4 py-10;
+  }
+
+  .card {
+    @apply rounded-xl border p-5;
+    border-color: rgb(var(--border));
+    background: rgb(var(--card));
+  }
+
+  .title {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  .subtitle {
+    @apply mt-2 text-sm;
+    color: rgb(var(--muted));
+  }
+
+  .muted {
+    color: rgb(var(--muted));
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition;
+    border-color: rgb(var(--border));
+    background: rgb(var(--card));
+  }
+  .btn:hover {
+    background: color-mix(in srgb, rgb(var(--card)) 88%, rgb(var(--accent)) 12%);
+  }
+  .btn:active {
+    transform: translateY(0.5px);
+  }
+
+  .btn-primary {
+    border-color: rgb(var(--accent));
+    background: rgb(var(--accent));
+    color: rgb(var(--accent-foreground));
+  }
+  .btn-primary:hover {
+    background: color-mix(in srgb, rgb(var(--accent)) 88%, rgb(var(--card)) 12%);
+  }
+
+  .kbd {
+    @apply rounded border px-2 py-0.5 text-xs;
+    border-color: rgb(var(--border));
+    background: color-mix(in srgb, rgb(var(--card)) 88%, rgb(var(--accent)) 12%);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+      Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .code {
+    @apply rounded px-1.5 py-0.5 text-sm;
+    border: 1px solid rgb(var(--border));
+    background: color-mix(in srgb, rgb(var(--card)) 92%, rgb(var(--accent)) 8%);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+      Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .callout {
+    @apply rounded-lg border p-4 text-sm;
+    border-color: rgb(var(--border));
+    background: color-mix(in srgb, rgb(var(--card)) 92%, rgb(var(--accent)) 8%);
+  }
+
+  .callout-success {
+    border-color: color-mix(in srgb, rgb(var(--success)) 35%, rgb(var(--border)) 65%);
+  }
+  .callout-warning {
+    border-color: color-mix(in srgb, rgb(var(--warning)) 45%, rgb(var(--border)) 55%);
+  }
+  .callout-danger {
+    border-color: color-mix(in srgb, rgb(var(--danger)) 45%, rgb(var(--border)) 55%);
+  }
+  .callout-info {
+    border-color: color-mix(in srgb, rgb(var(--info)) 45%, rgb(var(--border)) 55%);
+  }
+}

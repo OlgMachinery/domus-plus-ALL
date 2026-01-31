@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DOMUS+">
+  <rect width="64" height="64" rx="14" fill="black" />
+  <path d="M18 40V26l14-10 14 10v14" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M24 40v-8h16v8" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M47 17v10" stroke="white" stroke-width="4" stroke-linecap="round" />
+  <path d="M42 22h10" stroke="white" stroke-width="4" stroke-linecap="round" />
+</svg>
